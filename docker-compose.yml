@@ -30,8 +30,8 @@ services:
     expose:
       - 27018
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=vuln_nodejs_app
-      - MONGO_INITDB_ROOT_PASSWORD=supersecret
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_ADMINUSERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_ADMINPASSWORD}
     networks:
      - internalnet
 
@@ -56,8 +56,8 @@ services:
       SERVICE_NAME: nodeappservice
       JWT_SECRET: ${JWT_SECRET}
       MONGODB_SERVER: mongodb
-      MONGODB_ADMINUSERNAME: vuln_nodejs_app
-      MONGODB_ADMINPASSWORD: supersecret
+      MONGODB_ADMINUSERNAME: ${MONGODB_ADMINUSERNAME}
+      MONGODB_ADMINPASSWORD: ${MONGODB_ADMINPASSWORD}
     depends_on:
       - mysqldb
       - mongodb
