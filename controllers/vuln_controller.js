@@ -21,6 +21,9 @@ const con = mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   connectTimeout: 10000,
+  ssl: {
+    rejectUnauthorized: true,
+  },
 });
 
 // route handling
