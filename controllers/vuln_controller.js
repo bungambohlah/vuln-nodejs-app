@@ -22,7 +22,8 @@ const con = mysql.createConnection({
   port: process.env.DB_PORT,
   connectTimeout: 10000,
   ssl: {
-    rejectUnauthorized: true,
+    rejectUnauthorized: false,
+    cert: "/etc/ssl/certs/ca-certificates.crt",
   },
 });
 
