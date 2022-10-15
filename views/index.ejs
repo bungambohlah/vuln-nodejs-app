@@ -6,34 +6,35 @@
 
 <body>
   <%- include ('includes/navigation.ejs') %>
-  <div class='container' style='min-height: 450px'>
-    <div class='row'>
-      <div class='col-md-12'>
-        <h2>Vulnerabilities</h2>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Command Injection</h5>
-                <p class="card-text">Application is using exec method to run ping, your goal is to acheive the Remote
-                  Code Execution.</p>
-                <a href="/ping" class="btn btn-primary">Exploit -&#x3e;</a>
+    <div class='container' style='min-height: 450px'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <h2>Vulnerabilities</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Command Injection</h5>
+                  <p class="card-text">Application is using exec method to run ping, your goal is to acheive the Remote
+                    Code Execution.</p>
+                  <a href="/ping" class="btn btn-primary">Exploit -&#x3e;</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Insecure Deserialization</h5>
+                  <p class="card-text">Application is using node-serialize method unserialize to parse preference
+                    cookie,
+                    your goal is to acheive the RCE.</p>
+
+                  <a href="/deserialization" class="btn btn-primary">Exploit -&#x3e;</a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Insecure Deserialization</h5>
-                <p class="card-text">Application is using node-serialize method unserialize to parse preference cookie,
-                  your goal is to acheive the RCE.</p>
-  
-                <a href="/deserialization" class="btn btn-primary">Exploit -&#x3e;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
+          <!-- <br>
         <div class="row">
           <div class="col-sm-6">
             <div class="card">
@@ -319,9 +320,10 @@
             </div>
           </div>
         </div>
-        <br>
+        <br> -->
+        </div>
       </div>
     </div>
-  </div>
 </body>
+
 </html>
