@@ -14,18 +14,18 @@ const path = require("path");
 const MongoClient = require("mongodb").MongoClient;
 const fs = require("fs");
 
-const con = mysql.createConnection({
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  connectTimeout: 10000,
-  ssl: {
-    rejectUnauthorized: false,
-    cert: "/etc/ssl/certs/ca-certificates.crt",
-  },
-});
+const con = mysql.createConnection(
+  process.env.DB_URL
+    ? process.env.DB_URL
+    : {
+        database: process.env.DB_NAME,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        connectTimeout: 10000,
+      }
+);
 
 // route handling
 const app_index = (req, res) => {
