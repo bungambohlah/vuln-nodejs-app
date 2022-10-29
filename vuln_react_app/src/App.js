@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./MyComponents/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReactHrefXss from "./MyComponents/ReactHrefXss";
+import ReactPackage from "./MyComponents/ReactPackage";
 // import React_ref_innerHTML_xss from "./MyComponents/React_ref_innerHTML_xss";
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/react-href-xss" element={<ReactHrefXss />} />
+          <Route exact path="/react-packages" element={<ReactPackage />} />
           {/* <Route
             exact
             path="/react-ref-innerHTML-xss"
