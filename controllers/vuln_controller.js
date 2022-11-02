@@ -52,9 +52,8 @@ const ping_get = (req, res) => {
 
 const ping_post = (req, res) => {
   const ping = req.body.ping;
-  const ping1 = req.body.ping1;
   if (ping) {
-    exec("ping -c 3 " + req.body.ping, function (err, stdout, stderr) {
+    exec("ping -c 3 " + ping, function (err, stdout, stderr) {
       output = stdout + stderr;
       res.render("ping", {
         output: output,
@@ -62,19 +61,20 @@ const ping_post = (req, res) => {
       });
     });
   }
-  if (ping1) {
-    execFile(
-      "/usr/bin/ping",
-      ["-c", "3", ping1],
-      function (err, stdout, stderr) {
-        pingoutput = stdout + stderr;
-        res.render("ping", {
-          pingoutput: pingoutput,
-          output: null,
-        });
-      }
-    );
-  }
+  // NOTE: uncomment this for patching command injection
+  // if (ping) {
+  //   execFile(
+  //     "/usr/bin/ping",
+  //     ["-c", "3", ping],
+  //     function (err, stdout, stderr) {
+  //       let output = stdout + stderr;
+  //       res.render("ping", {
+  //         output,
+  //         pingoutput: null,
+  //       });
+  //     }
+  //   );
+  // }
 };
 
 const sqli_get = (req, res) => {
@@ -159,6 +159,8 @@ const deserialization_get = (req, res) => {
 
 const save_preference_post = (req, res) => {
   const preference = serialize.unserialize(req.cookies.preference);
+  // NOTE: for patching uncomment this
+  // const preference = JSON.parse(req.cookies.preference);
   res.send(preference);
 };
 

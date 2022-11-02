@@ -3,7 +3,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import { Parser as HtmlToReactParser } from "html-to-react";
-// import sanitizeHtml from "sanitize-html";
+import sanitizeHtml from "sanitize-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const htmlToReactParser = new HtmlToReactParser();
@@ -40,6 +40,12 @@ export default function ReactPackage() {
                 {htmlToReactParser.parse(
                   draftToHtml(convertToRaw(editorState.getCurrentContent()))
                 )}
+                {/* uncomment this for patching */}
+                {/* {htmlToReactParser.parse(
+                  sanitizeHtml(
+                    draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                  )
+                )} */}
               </p>
             </div>
           </div>
