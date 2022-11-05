@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+// uncomment this for patching
+// import ReactDOMServer from "react-dom/server";
+// import sanitizeHtml from "sanitize-html";
+// import parse from "html-react-parser";
 
 export default function React_href_xss() {
   const [state, setState] = useState({ name: "", email: "", website: "" });
+  // uncomment this for patching
+  // const [sanitizedLink, setSanitizedLink] = useState(
+  //   `<a href={${state.website}>${state.website}</a>`
+  // );
 
   function updateForm() {
     document.getElementById("updated").setAttribute("hidden", true);
@@ -30,6 +38,14 @@ export default function React_href_xss() {
     document.getElementById("update").setAttribute("hidden", true);
     document.getElementById("updated").removeAttribute("hidden");
   }
+
+  // uncomment this for patching
+  // useEffect(() => {
+  //   if (state.website)
+  //     setSanitizedLink(
+  //       sanitizeHtml(`<a href=${state.website}>${state.website}</a>`)
+  //     );
+  // }, [state.website]);
 
   return (
     <div>
@@ -70,7 +86,10 @@ export default function React_href_xss() {
               <p className="card-text">
                 Name: {state.name} <br />
                 Email: {state.email} <br />
-                Website: <a href={state.website}>{state.website}</a> <br />
+                {/* uncomment this for patching */}
+                {/* Website: {parse(sanitizedLink)} */}
+                Website: <a href={state.website}>{state.website}</a>
+                <br />
                 <br />
                 <button onClick={updateForm}>Edit</button>
               </p>
